@@ -1,11 +1,23 @@
-﻿use master;
-go
-drop database if exists iznajmljivanje;
-go
-create database iznajmljivanje collate Croatian_CI_AS;
-go
-use iznajmljivanje;
-go
+﻿
+
+ALTER DATABASE db_abb85b_wp8 SET SINGLE_USER WITH
+ROLLBACK IMMEDIATE;
+GO
+ALTER DATABASE db_abb85b_wp8 COLLATE Latin1_General_100_CI_AI_SC_UTF8;
+GO
+ALTER DATABASE db_abb85b_wp8 SET MULTI_USER;
+GO
+
+
+
+--use master;
+--go
+--drop database if exists iznajmljivanje;
+--go
+--create database iznajmljivanje collate Croatian_CI_AS;
+--go
+--use iznajmljivanje;
+--go
 
 create table najmodavac (
 sifra int not null primary key identity (1,1),
