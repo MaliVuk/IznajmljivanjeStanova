@@ -1,15 +1,22 @@
 import { HttpService } from "./HttpService";
 
 async function get() {
-    try {
-        const odgovor = await HttpService.get('/Najmodavac');
-        return odgovor.data;
-    } catch (e) {
-        console.error("Greška pri dohvaćanju najmodavaca:", e);
-        throw e; // ili: return []; ako želiš samo prazan niz
-    }
+    const odgovor = await HttpService.get('/Najmodavac');
+    return odgovor.data;
+}
+
+async function dodaj(najmodavac) {
+    const odgovor = await HttpService.post('/Najmodavac', najmodavac);
+    return odgovor.data;
+}
+
+async function obrisi(sifra) {
+    const odgovor = await HttpService.delete(`/Najmodavac/${sifra}`);
+    return odgovor.data;
 }
 
 export default {
-    get
+    get,
+    dodaj,
+    obrisi
 };

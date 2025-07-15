@@ -6,11 +6,9 @@ import { Route, Routes } from 'react-router-dom'
 import { RouteNames } from './constants'
 import Pocetna from './pages/Pocetna'
 import NajmodavacPregled from './pages/Najmodavac/NajmodavacPregled'
-
+import NajmodavacDodaj from './pages/Najmodavac/NajmodavacDodaj' // ✅ OVAJ import
 
 function App() {
-  
-
   return (
     <Container>
       <NavBarEdunova />
@@ -18,12 +16,11 @@ function App() {
       <Container className="app">
         <Routes>
           <Route path={RouteNames.HOME} element={<Pocetna />} />
-
           <Route path={RouteNames.NAJMODAVAC_PREGLED} element={<NajmodavacPregled />} />
-          
+          <Route path={RouteNames.NAJMODAVAC_NOVI} element={<NajmodavacDodaj />} /> {/* ✅ OVA ruta MORA biti ovdje */}
         </Routes>
       </Container>
-      
+
       <hr />
       &copy; IznajmljivanjeStanova
     </Container>
