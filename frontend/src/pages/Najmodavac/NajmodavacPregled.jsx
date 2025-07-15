@@ -4,7 +4,6 @@ import NajmodavacService from "../../services/NajmodavacService";
 
 export default function NajmodavacPregled() {
     const [najmodavci, setNajmodavci] = useState([]);
-    const [greska, setGreska] = useState(null);
 
     async function dohvatiNajmodavce() {
         try {
@@ -12,7 +11,7 @@ export default function NajmodavacPregled() {
             console.log("Primljeni najmodavci:", odgovor);
             setNajmodavci(odgovor);
         } catch (e) {
-            setGreska("Neuspješan dohvat najmodavaca.");
+            
         }
     }
 
@@ -24,8 +23,6 @@ export default function NajmodavacPregled() {
         <>
             <h3>Tablični Pregled Najmodavaca</h3>
 
-            {greska && <div style={{ color: "red" }}>{greska}</div>}
-
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
@@ -34,7 +31,7 @@ export default function NajmodavacPregled() {
                     </tr>
                 </thead>
                 <tbody>
-                    {najmodavci.length === 0 ? (
+                    {najmodavci && najmodavci.length === 0 ? (
                         <tr>
                             <td colSpan={2}>Nema dostupnih najmodavaca.</td>
                         </tr>
