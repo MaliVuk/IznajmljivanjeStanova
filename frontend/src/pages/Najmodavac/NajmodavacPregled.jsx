@@ -3,12 +3,17 @@ import { Table } from "react-bootstrap";
 import NajmodavacService from "../../services/NajmodavacService";
 
 export default function NajmodavacPregled() {
-
     const [najmodavci, setNajmodavci] = useState([]);
+    const [greska, setGreska] = useState(null);
 
     async function dohvatiNajmodavce() {
-        const odgovor = await NajmodavacService.get();
-        setNajmodavci(odgovor);
+        try {
+            const odgovor = await NajmodavacService.get();
+            console.log("Primljeni najmodavci:", odgovor);
+            setNajmodavci(odgovor);
+        } catch (e) {
+            setGreska("Neuspješan dohvat najmodavaca.");
+        }
     }
 
     useEffect(() => {
@@ -18,6 +23,9 @@ export default function NajmodavacPregled() {
     return (
         <>
             <h3>Tablični Pregled Najmodavaca</h3>
+
+            {greska && <div style={{ color: "red" }}>{greska}</div>}
+
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
@@ -26,12 +34,18 @@ export default function NajmodavacPregled() {
                     </tr>
                 </thead>
                 <tbody>
-                    {najmodavci && najmodavci.map((n, index) => (
-                        <tr key={index}>
-                            <td>{n.ime}</td>
-                            <td>{n.prezime}</td>
+                    {najmodavci.length === 0 ? (
+                        <tr>
+                            <td colSpan={2}>Nema dostupnih najmodavaca.</td>
                         </tr>
-                    ))}
+                    ) : (
+                        najmodavci.map((n, index) => (
+                            <tr key={index}>
+                                <td>{n.ime}</td>
+                                <td>{n.prezime}</td>
+                            </tr>
+                        ))
+                    )}
                 </tbody>
             </Table>
         </>

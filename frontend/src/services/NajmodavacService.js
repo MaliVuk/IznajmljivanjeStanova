@@ -1,17 +1,15 @@
-import { HttpService } from "./HttpService"
-
+import { HttpService } from "./HttpService";
 
 async function get() {
-    return await HttpService.get('/Najmodavac')
-    // sve je u redu, dobili smo odgovor
-    .then((odgovor)=>{
-        //console.log(odgovor.data)
-        return odgovor.data
-    })
-    // nastala je greška, obradi ju
-    .catch((e)=>{})
+    try {
+        const odgovor = await HttpService.get('/Najmodavac');
+        return odgovor.data;
+    } catch (e) {
+        console.error("Greška pri dohvaćanju najmodavaca:", e);
+        throw e; // ili: return []; ako želiš samo prazan niz
+    }
 }
 
-export default{
+export default {
     get
-}
+};
