@@ -15,9 +15,15 @@ async function obrisi(sifra) {
     return odgovor.data;
 }
 
+async function promjeni(sifra,najmodavac) {
+    const odgovor = await HttpService.put(`/Najmodavac/${sifra}`,najmodavac);
+    return odgovor.data;
+}
+
 export default {
     get,
     dodaj,
-    obrisi
+    obrisi,
+    promjeni
 };
   

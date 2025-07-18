@@ -18,6 +18,7 @@ function App() {
           <Route path={RouteNames.HOME} element={<Pocetna />} />
           <Route path={RouteNames.NAJMODAVAC_PREGLED} element={<NajmodavacPregled />} />
           <Route path={RouteNames.NAJMODAVAC_NOVI} element={<NajmodavacDodaj />} /> {/* ✅ OVA ruta MORA biti ovdje */}
+          <Route path=''
         </Routes>
       </Container>
 

@@ -8,7 +8,7 @@ export default function NajmodavacPregled() {
     const [najmodavci, setNajmodavci] = useState([]);
 
     async function dohvatiNajmodavce() {
-        const odgovor = await NajmodavacService.get();
+        const odgovor =  NajmodavacService.get();
         setNajmodavci(odgovor);
     }
 
@@ -53,7 +53,11 @@ export default function NajmodavacPregled() {
                                 <td>{n.ime}</td>
                                 <td>{n.prezime}</td>
                                 <td>
-                                    <Button variant="danger" onClick={() => obrisi(n.sifra)}>
+                                      <Button variant="danger" onClick={() => obrisi(n.sifra)}>
+                                        Obriši
+                                    </Button>
+                                    &nbsp
+                                    <Button promjena="danger" onClick={() => obrisi(n.sifra)}>
                                         Obriši
                                     </Button>
                                 </td>
