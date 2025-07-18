@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
 import NajmodavacService from "../../services/NajmodavacService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 
 export default function NajmodavacPregled() {
     const [najmodavci, setNajmodavci] = useState([]);
+    const navigate=useNavigate()
 
     async function dohvatiNajmodavce() {
-        const odgovor =  NajmodavacService.get();
+        const odgovor =  await NajmodavacService.get();
         setNajmodavci(odgovor);
     }
 
@@ -53,11 +54,11 @@ export default function NajmodavacPregled() {
                                 <td>{n.ime}</td>
                                 <td>{n.prezime}</td>
                                 <td>
-                                      <Button variant="danger" onClick={() => obrisi(n.sifra)}>
-                                        Obriši
+                                      <Button  onClick={() =>navigate(`/Najmodavci/${n.sifra}`)}>
+                                        Promjena
                                     </Button>
-                                    &nbsp
-                                    <Button promjena="danger" onClick={() => obrisi(n.sifra)}>
+                                    &nbsp;
+                                    <Button variant="danger" onClick={() => obrisi(n.sifra)}>
                                         Obriši
                                     </Button>
                                 </td>

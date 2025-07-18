@@ -1,18 +1,28 @@
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { RouteNames } from "../../constants";
 import NajmodavacService from "../../services/NajmodavacService";
+import { useEffect, useState } from "react";
 
 export default function NajmodavacPromjena() {
+    
     const navigate = useNavigate();
-    async funcion ucitajNajmodavac() {
+    const params = useParams()
+    const[najmodavac,setNajmodavac] = useState({})
 
 
-        
+    async function ucitajNajmodavac() {
+
+        const odgovor = await NajmodavacService.getBySifra(params.sifra)
+        setNajmodavac(odgovor)
     }
 
+   useEffect(() => {
+        ucitajNajmodavac();
+    }, []);
+
     async function promjena(sifra,najmodavac) {
-        const odgovor = await NajmodavacService.dodaj(sifra,najmodavac);
+        const odgovor = await NajmodavacService.promjena(sifra,najmodavac);
         navigate(RouteNames.NAJMODAVAC_PREGLED);
     }
 
@@ -21,7 +31,10 @@ export default function NajmodavacPromjena() {
 
         let podaci = new FormData(e.target);
 
-        promjena({
+        promjena(
+            params.sifra,
+            {
+                sifra: params.sifra,
             ime: podaci.get('ime'),
             prezime: podaci.get('prezime')
         });
@@ -34,12 +47,12 @@ export default function NajmodavacPromjena() {
 
                 <Form.Group controlId="ime">
                     <Form.Label>Ime</Form.Label>
-                    <Form.Control type="text" name="ime" required />
+                    <Form.Control type="text" name="ime" required defaultValue={najmodavac.ime}/>
                 </Form.Group>
 
                 <Form.Group controlId="prezime">
                     <Form.Label>Prezime</Form.Label>
-                    <Form.Control type="text" name="prezime" required />
+                    <Form.Control type="text" name="prezime" required defaultValue={najmodavac.prezime}/>
                 </Form.Group>
 
                 <hr style={{ marginTop: '50px' }} />
@@ -52,7 +65,7 @@ export default function NajmodavacPromjena() {
                     </Col>
                     <Col xs={6}>
                         <Button variant="success" type="submit">
-                            Dodaj najmodavca
+                            Promjeni najmodavca
                         </Button>
                     </Col>
                 </Row>

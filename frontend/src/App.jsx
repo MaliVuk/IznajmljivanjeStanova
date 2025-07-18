@@ -7,6 +7,7 @@ import { RouteNames } from './constants'
 import Pocetna from './pages/Pocetna'
 import NajmodavacPregled from './pages/Najmodavac/NajmodavacPregled'
 import NajmodavacDodaj from './pages/Najmodavac/NajmodavacDodaj' // ✅ OVAJ import
+import NajmodavacPromjena from './pages/Najmodavac/NajmodavacPromjena'
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
           <Route path={RouteNames.HOME} element={<Pocetna />} />
           <Route path={RouteNames.NAJMODAVAC_PREGLED} element={<NajmodavacPregled />} />
           <Route path={RouteNames.NAJMODAVAC_NOVI} element={<NajmodavacDodaj />} /> {/* ✅ OVA ruta MORA biti ovdje */}
-          <Route path=''
+          <Route path={RouteNames.NAJMODAVAC_PROMJENA} element={<NajmodavacPromjena />} /> {/* ✅ OVA ruta MORA biti ovdje */}
+          
         </Routes>
       </Container>
 

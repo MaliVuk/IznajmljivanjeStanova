@@ -5,6 +5,11 @@ async function get() {
     return odgovor.data;
 }
 
+async function getBySifra(sifra) {
+    const odgovor = await HttpService.get(`/Najmodavac/${sifra}`);
+    return odgovor.data;
+}
+
 async function dodaj(najmodavac) {
     const odgovor = await HttpService.post('/Najmodavac', najmodavac);
     return odgovor.data;
@@ -15,15 +20,16 @@ async function obrisi(sifra) {
     return odgovor.data;
 }
 
-async function promjeni(sifra,najmodavac) {
+async function promjena(sifra,najmodavac) {
     const odgovor = await HttpService.put(`/Najmodavac/${sifra}`,najmodavac);
     return odgovor.data;
 }
 
 export default {
     get,
+    getBySifra,
     dodaj,
     obrisi,
-    promjeni
+    promjena
 };
   
