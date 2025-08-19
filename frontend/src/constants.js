@@ -5,7 +5,9 @@ export const RouteNames = {
 
     NAJMODAVAC_PREGLED: '/Najmodavci', // ovo je ruta na frontendu
     NAJMODAVAC_NOVI: '/Najmodavci/dodaj',
-    NAJMODAVAC_PROMJENA:'/Najmodavci/:sifra'
+    NAJMODAVAC_PROMJENA:'/Najmodavci/:sifra',
+
+    ERA: '/era',
 }    
 
 export const PRODUKCIJA='https://malivuk-001-site1.mtempurl.com';
