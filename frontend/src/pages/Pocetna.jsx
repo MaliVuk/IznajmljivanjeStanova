@@ -1,4 +1,4 @@
-import slika from '../assets/edunovaSlika.png'
+import slika from '../assets/ERA.png'
 
 export default function Pocetna(){
     return(
