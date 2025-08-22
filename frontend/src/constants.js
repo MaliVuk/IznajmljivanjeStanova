@@ -8,6 +8,7 @@ export const RouteNames = {
     NAJMODAVAC_PROMJENA:'/Najmodavci/:sifra',
 
     ERA: '/era',
+    ZGRADA: '/zgrada'   
 }    
 
 export const PRODUKCIJA='https://malivuk-001-site1.mtempurl.com';

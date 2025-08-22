@@ -28,6 +28,7 @@ export default function NavBarEdunova() {
               
             </NavDropdown>
             <Nav.Link href="#" onClick={()=>navigate(RouteNames.ERA)}>ERA</Nav.Link>
+             <Nav.Link href="#" onClick={()=>navigate(RouteNames.ZGRADA)}>Zgrada</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -9,6 +9,7 @@ import NajmodavacPregled from './pages/Najmodavac/NajmodavacPregled'
 import NajmodavacDodaj from './pages/Najmodavac/NajmodavacDodaj' // ✅ OVAJ import
 import NajmodavacPromjena from './pages/Najmodavac/NajmodavacPromjena'
 import ERA from './pages/ERA'
+import Zgrada from './pages/Zgrada'
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path={RouteNames.NAJMODAVAC_PREGLED} element={<NajmodavacPregled />} />
           <Route path={RouteNames.NAJMODAVAC_NOVI} element={<NajmodavacDodaj />} /> {/* ✅ OVA ruta MORA biti ovdje */}
           <Route path={RouteNames.NAJMODAVAC_PROMJENA} element={<NajmodavacPromjena />} /> {/* ✅ OVA ruta MORA biti ovdje */}
-          
+          <Route path={RouteNames.ZGRADA} element={<Zgrada />} />
           <Route path={RouteNames.ERA} element={<ERA />} />
         </Routes>
       </Container>
