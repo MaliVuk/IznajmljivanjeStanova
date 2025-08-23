@@ -10,6 +10,9 @@ import NajmodavacDodaj from './pages/Najmodavac/NajmodavacDodaj' // ✅ OVAJ imp
 import NajmodavacPromjena from './pages/Najmodavac/NajmodavacPromjena'
 import ERA from './pages/ERA'
 import Zgrada from './pages/Zgrada'
+import NajmoprimacPregled from './pages/Najmoprimac/NajmoprimacPregled'
+import NajmoprimacDodaj from './pages/Najmoprimac/NajmoprimacDodaj'
+import NajmoprimacPromjena from './pages/Najmoprimac/NajmoprimacPromjena'
 
 function App() {
   return (
@@ -19,9 +22,17 @@ function App() {
       <Container className="app">
         <Routes>
           <Route path={RouteNames.HOME} element={<Pocetna />} />
+
           <Route path={RouteNames.NAJMODAVAC_PREGLED} element={<NajmodavacPregled />} />
-          <Route path={RouteNames.NAJMODAVAC_NOVI} element={<NajmodavacDodaj />} /> {/* ✅ OVA ruta MORA biti ovdje */}
-          <Route path={RouteNames.NAJMODAVAC_PROMJENA} element={<NajmodavacPromjena />} /> {/* ✅ OVA ruta MORA biti ovdje */}
+          <Route path={RouteNames.NAJMODAVAC_NOVI} element={<NajmodavacDodaj />} /> 
+          <Route path={RouteNames.NAJMODAVAC_PROMJENA} element={<NajmodavacPromjena />} />
+
+
+           <Route path={RouteNames.NAJMOPRIMAC_PREGLED} element={<NajmoprimacPregled />} />
+          <Route path={RouteNames.NAJMOPRIMAC_NOVI} element={<NajmoprimacDodaj />} /> 
+          <Route path={RouteNames.NAJMOPRIMAC_PROMJENA} element={<NajmoprimacPromjena />} />
+
+
           <Route path={RouteNames.ZGRADA} element={<Zgrada />} />
           <Route path={RouteNames.ERA} element={<ERA />} />
         </Routes>

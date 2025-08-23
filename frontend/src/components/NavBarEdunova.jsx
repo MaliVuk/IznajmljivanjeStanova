@@ -25,6 +25,10 @@ export default function NavBarEdunova() {
                 onClick={()=>navigate(RouteNames.NAJMODAVAC_PREGLED)}>
                 Najmodavci
               </NavDropdown.Item>
+              <NavDropdown.Item 
+                onClick={()=>navigate(RouteNames.NAJMOPRIMAC_PREGLED)}>
+                Najmoprimci
+              </NavDropdown.Item>
               
             </NavDropdown>
             <Nav.Link href="#" onClick={()=>navigate(RouteNames.ERA)}>ERA</Nav.Link>
