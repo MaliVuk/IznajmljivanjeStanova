@@ -12,5 +12,16 @@ namespace BACKEND.Data
         // This DbSet property is correctly named (pluralized in C# convention)
         public DbSet<Najmodavac> Najmodavci { get; set; }
         public DbSet<Najmoprimac> Najmoprimci { get; set; }
+
+        public DbSet<Stan> Stanovi { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Stan>().HasOne(x => x.Najmodavac);
+
+        }
+
     }
 }
