@@ -34,7 +34,7 @@ namespace EdunovaApp.Controllers
             if (sifra < 1)
                 return BadRequest(new { poruka = "Šifra mora biti veća od 0." });
 
-            var najmoprimac = await _context.Najmodavci.FindAsync(sifra);
+            var najmoprimac = await _context.Najmoprimci.FindAsync(sifra);
             if (najmoprimac == null)
                 return NotFound(new { poruka = "Najmoprimac nije pronađen." });
 
@@ -60,7 +60,7 @@ namespace EdunovaApp.Controllers
         }
 
         [HttpPut("{sifra:int}")]
-        public async Task<IActionResult> Put(int sifra, [FromBody] Najmodavac najmoprimac)
+        public async Task<IActionResult> Put(int sifra, [FromBody] Najmoprimac najmoprimac)
         {
            
             if (!ModelState.IsValid)
@@ -88,13 +88,13 @@ namespace EdunovaApp.Controllers
             if (sifra < 1)
                 return BadRequest(new { poruka = "Šifra mora biti veća od 0." });
 
-            var najmoprimac = await _context.Najmodavci.FindAsync(sifra);
+            var najmoprimac = await _context.Najmoprimci.FindAsync(sifra);
             if (najmoprimac == null)
                 return NotFound(new { poruka = "Najmoprimac nije pronađen." });
 
             try
             {
-                _context.Najmodavci.Remove(najmoprimac);
+                _context.Najmoprimci.Remove(najmoprimac);
                 await _context.SaveChangesAsync();
                 return NoContent();
             }
