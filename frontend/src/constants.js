@@ -15,6 +15,6 @@ export const RouteNames = {
     ZGRADA: '/zgrada'   
 }    
 
-//export const PRODUKCIJA='https://malivuk-001-site1.mtempurl.com';
+export const PRODUKCIJA='https://malivuk-001-site1.mtempurl.com';
 
-export const PRODUKCIJA='https://localhost:7099';
+//export const PRODUKCIJA='https://localhost:7099';
