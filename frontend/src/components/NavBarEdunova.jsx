@@ -20,7 +20,7 @@ export default function NavBarEdunova() {
           <Nav className="me-auto">
             
             <Nav.Link href="#" onClick={()=>navigate(RouteNames.HOME)}>Početna</Nav.Link>
-            <NavDropdown title="Najmodavac" id="basic-nav-dropdown">
+            <NavDropdown title="Programi" id="basic-nav-dropdown">
               <NavDropdown.Item 
                 onClick={()=>navigate(RouteNames.NAJMODAVAC_PREGLED)}>
                 Najmodavci
