@@ -2,6 +2,8 @@
 using BACKEND.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using static System.Net.Mime.MediaTypeNames;
+using System.Drawing;
 
 namespace EdunovaApp.Controllers
 {
@@ -108,4 +110,7 @@ namespace EdunovaApp.Controllers
             }
         }
     }
+
+
 }
+
