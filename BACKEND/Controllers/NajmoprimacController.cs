@@ -1,4 +1,5 @@
-﻿using BACKEND.Data;
+﻿
+using BACKEND.Data;
 using BACKEND.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -9,21 +10,16 @@ namespace EdunovaApp.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class NajmodavacController : ControllerBase
+    public class NajmoprimacController(EdunovaContext context) : ControllerBase
     {
-        private readonly EdunovaContext _context;
-
-        public NajmodavacController(EdunovaContext context)
-        {
-            _context = context;
-        }
+        private readonly EdunovaContext _context = context;
 
         [HttpGet]
         public async Task<IActionResult> Get()
         {
             try
             {
-                var najmodavci = await _context.Najmodavci.ToListAsync();
+                var najmodavci = await _context.Najmoprimci.ToListAsync();
                 return Ok(najmodavci);
             }
             catch (Exception e)
@@ -38,46 +34,47 @@ namespace EdunovaApp.Controllers
             if (sifra < 1)
                 return BadRequest(new { poruka = "Šifra mora biti veća od 0." });
 
-            var najmodavac = await _context.Najmodavci.FindAsync(sifra);
-            if (najmodavac == null)
-                return NotFound(new { poruka = "Najmodavac nije pronađen." });
+            var najmoprimac = await _context.Najmodavci.FindAsync(sifra);
+            if (najmoprimac == null)
+                return NotFound(new { poruka = "Najmoprimac nije pronađen." });
 
-            return Ok(najmodavac);
+            return Ok(najmoprimac);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] Najmodavac najmodavac)
+        public async Task<IActionResult> Post([FromBody] Najmoprimac najmoprimac)
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
             try
             {
-                await _context.Najmodavci.AddAsync(najmodavac);
+                await _context.Najmoprimci.AddAsync(najmoprimac);
                 await _context.SaveChangesAsync();
-                return CreatedAtAction(nameof(GetById), new { sifra = najmodavac.Sifra }, najmodavac);
+                return CreatedAtAction(nameof(GetById), new { sifra = najmoprimac.Sifra }, najmoprimac);
             }
             catch (Exception e)
             {
-                return StatusCode(500, new { poruka = "Greška pri spremanju najmodavca.", detalji = e.Message });
+                return StatusCode(500, new { poruka = "Greška pri spremanju najmoprimca.", detalji = e.Message });
             }
         }
 
         [HttpPut("{sifra:int}")]
-        public async Task<IActionResult> Put(int sifra, [FromBody] Najmodavac najmodavac)
+        public async Task<IActionResult> Put(int sifra, [FromBody] Najmodavac najmoprimac)
         {
-           if (!ModelState.IsValid)
+           
+            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var postoji = await _context.Najmodavci.AnyAsync(n => n.Sifra == sifra);
+            var postoji = await _context.Najmoprimci.AnyAsync(n => n.Sifra == sifra);
             if (!postoji)
-                return NotFound(new { poruka = "Najmodavac nije pronađen." });
+                return NotFound(new { poruka = "Najmoprimac nije pronađen." });
 
             try
             {
-                _context.Entry(najmodavac).State = EntityState.Modified;
+                _context.Entry(najmoprimac).State = EntityState.Modified;
                 await _context.SaveChangesAsync();
-                return Ok(najmodavac);
+                return Ok(najmoprimac);
             }
             catch (DbUpdateConcurrencyException e)
             {
@@ -91,23 +88,24 @@ namespace EdunovaApp.Controllers
             if (sifra < 1)
                 return BadRequest(new { poruka = "Šifra mora biti veća od 0." });
 
-            var najmodavac = await _context.Najmodavci.FindAsync(sifra);
-            if (najmodavac == null)
-                return NotFound(new { poruka = "Najmodavac nije pronađen." });
+            var najmoprimac = await _context.Najmodavci.FindAsync(sifra);
+            if (najmoprimac == null)
+                return NotFound(new { poruka = "Najmoprimac nije pronađen." });
 
             try
             {
-                _context.Najmodavci.Remove(najmodavac);
+                _context.Najmodavci.Remove(najmoprimac);
                 await _context.SaveChangesAsync();
                 return NoContent();
             }
             catch (Exception e)
             {
-                return StatusCode(500, new { poruka = "Greška pri brisanju najmodavca.", detalji = e.Message });
+                return StatusCode(500, new { poruka = "Greška pri brisanju najmoprimca.", detalji = e.Message });
             }
         }
     }
 
 
 }
+
 
