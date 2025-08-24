@@ -1,20 +1,20 @@
 import { useEffect, useState } from "react";
 import { Button, Table } from "react-bootstrap";
-import NajmoprimacService from "../../services/NajmoprimacService";
+import StanService from "../../services/StanService";
 import { Link, useNavigate } from "react-router-dom";
 import { RouteNames } from "../../constants";
 
-export default function NajmoprimacPregled() {
-    const [najmoprimci, setNajmoprimci] = useState([]);
+export default function StanPregled() {
+    const [stanovi, setStanovi] = useState([]);
     const navigate=useNavigate()
 
-    async function dohvatiNajmoprimce() {
-        const odgovor =  await NajmoprimacService.get();
-        setNajmoprimci(odgovor);
+    async function dohvatiStanove() {
+        const odgovor =  await StanService.get();
+        setStanovi(odgovor);
     }
 
     useEffect(() => {
-        dohvatiNajmoprimce();
+        dohvatiStanove();
     }, []);
 
     function obrisi(sifra) {
@@ -23,38 +23,38 @@ export default function NajmoprimacPregled() {
     }
 
     async function brisanje(sifra) {
-        await NajmoprimacService.obrisi(sifra);
-        dohvatiNajmoprimce();
+        await StanService.obrisi(sifra);
+        dohvatiStanove();
     }
 
     return (
         <>
-            <h3>Pregled najmoprimaca</h3>
+            <h3>Pregled stanova</h3>
 
-            <Link className="btn btn-success mb-3" to={RouteNames.NAJMOPRIMAC_NOVI}>
-                Dodaj novog najmoprimca
+            <Link className="btn btn-success mb-3" to={RouteNames.STAN_NOVI}>
+                Dodaj novog stana
             </Link>
 
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Ime_ili_Naziv</th>
-                        <th>Kontakt</th>
-                        <th>Akcija</th>
+                        <th>Adresa</th>
+                        <th>DatumUplateStanarine</th>
+                        <th>Najmodavac</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {najmoprimci.length === 0 ? (
+                    {stanovi.length === 0 ? (
                         <tr>
-                            <td colSpan={3}>Nema najmoprimaca.</td>
+                            <td colSpan={3}>Nema stanova.</td>
                         </tr>
                     ) : (
-                        najmoprimci.map((n, index) => (
+                        stanovi.map((n, index) => (
                             <tr key={index}>
-                                <td>{n.Ime_ili_Naziv}</td>
-                                <td>{n.kontakt}</td>
+                                <td>{n.adresa}</td>
+                                <td>{n.datumuplatestanarine}</td>
                                 <td>
-                                      <Button  onClick={() =>navigate(`/Najmoprimci/${n.sifra}`)}>
+                                      <Button  onClick={() =>navigate(`/Stanovi/${n.sifra}`)}>
                                         Promjena
                                     </Button>
                                     &nbsp;

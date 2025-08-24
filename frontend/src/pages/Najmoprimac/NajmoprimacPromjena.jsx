@@ -35,7 +35,7 @@ export default function NajmoprimacPromjena() {
             params.sifra,
             {
                 sifra: params.sifra,
-           imeNaziv: podaci.get('imeNaziv'),
+           imeNaziv: podaci.get('Ime_ili_Naziv'),
             kontakt: podaci.get('kontakt')
         });
     }
@@ -46,9 +46,9 @@ export default function NajmoprimacPromjena() {
             <Form onSubmit={odradiSubmit}>
 
 
-                  <Form.Group controlId="imeNaziv">
+                  <Form.Group controlId="Ime_ili_Naziv">
                     <Form.Label>Ime ili naziv</Form.Label>
-                    <Form.Control type="text" name="imeNaziv" required defaultValue={najmoprimac.imeNaziv}/>
+                    <Form.Control type="text" name="Ime_ili_Naziv" required defaultValue={najmoprimac.imeNaziv}/>
                 </Form.Group>
 
                 <Form.Group controlId="kontakt">

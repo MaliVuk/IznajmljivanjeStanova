@@ -1,3 +1,6 @@
+import StanPregled from './pages/Stan/StanPregled';
+import StanDodaj from './pages/Stan/StanDodaj';
+import StanPromjena from './pages/Stan/StanPromjena';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import { Container } from 'react-bootstrap'
@@ -31,6 +34,11 @@ function App() {
            <Route path={RouteNames.NAJMOPRIMAC_PREGLED} element={<NajmoprimacPregled />} />
           <Route path={RouteNames.NAJMOPRIMAC_NOVI} element={<NajmoprimacDodaj />} /> 
           <Route path={RouteNames.NAJMOPRIMAC_PROMJENA} element={<NajmoprimacPromjena />} />
+
+                     <Route path={RouteNames.STAN_PREGLED} element={<StanPregled />} />
+          <Route path={RouteNames.STAN_NOVI} element={<StanDodaj />} /> 
+          <Route path={RouteNames.STAN_PROMJENA} element={<StanPromjena />} />
+
 
 
           <Route path={RouteNames.ZGRADA} element={<Zgrada />} />

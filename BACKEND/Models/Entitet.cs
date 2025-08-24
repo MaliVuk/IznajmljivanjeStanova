@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-namespace BACKEND.Models
+using System.ComponentModel.DataAnnotations.Schema;
 
- 
+namespace BACKEND.Models
 {
-    public abstract class Entitet
+    public class Entitet
     {
-          [Key]
-        public int Sifra {get; set;}
+        [Key] // ovo kaže EF-u da je primarni ključ
+        public int Sifra { get; set; }
     }
 }

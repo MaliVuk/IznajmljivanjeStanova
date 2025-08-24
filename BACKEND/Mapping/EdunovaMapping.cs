@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using BACKEND.Models;
 using BACKEND.Models.DTO;
-using System.Text.RegularExpressions;
 
 namespace BACKEND.Mapping
 {
@@ -9,13 +8,12 @@ namespace BACKEND.Mapping
     {
         public EdunovaMapping()
         {
-
             CreateMap<Stan, StanDTORead>()
-               .ForCtorParam(
-                   "NajmodavacImePrezime",
-                   opt => opt.MapFrom(src => src.Najmodavac.Ime + " " + src.Najmodavac.Prezime)
-               );
+                .ForMember(dest => dest.NajmodavacIme, opt => opt.MapFrom(src => src.NajmodavacNavigation.Ime))
+                .ForMember(dest => dest.NajmodavacPrezime, opt => opt.MapFrom(src => src.NajmodavacNavigation.Prezime));
 
+            // Ako koristiš DTO za Create
+            CreateMap<StanDTOCreate, Stan>();
         }
     }
 }

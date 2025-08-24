@@ -1,12 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BACKEND.Models
 {
-    [Table(name:"najmoprimac")]
-    public class Najmoprimac : Entitet
+
+    [Table("najmoprimac")]
+    public class Najmoprimac
     {
-        [Column(name: "ime_ili_naziv")]
-        public string ImeNaziv { get; set; } = "";
-        public string Kontakt { get; set; } = "";
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Sifra { get; set; }   // Primarni ključ
+
+        [Required]
+        [MaxLength(100)]
+        public string Ime_ili_Naziv { get; set; } = "";  // Ime osobe ili naziv firme
+
+        [MaxLength(50)]
+        public string Kontakt { get; set; } = "";        // Kontakt podaci (telefon, email...)
     }
 }

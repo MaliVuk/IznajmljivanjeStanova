@@ -11,6 +11,12 @@ export const RouteNames = {
     NAJMOPRIMAC_NOVI: '/Najmoprimci/dodaj',
     NAJMOPRIMAC_PROMJENA:'/Najmoprimci/:sifra',
 
+    
+     STAN_PREGLED: '/Stanovi', // ovo je ruta na frontendu
+    STAN_NOVI: '/Stanovi/dodaj',
+    STAN_PROMJENA:'/Stanovi/:sifra',
+
+
     ERA: '/era',
     ZGRADA: '/zgrada'   
 }    
