@@ -19,18 +19,6 @@ namespace BACKEND.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            // Konfiguracija veze Stan -> Najmodavac
-            modelBuilder.Entity<Stan>()
-                .HasOne(s => s.NajmodavacNavigation)  // navigacijsko svojstvo
-                .WithMany(n => n.Stanovi)             // jedan Najmodavac ima više stanova
-                .HasForeignKey(s => s.Najmodavac)    // FK u tabeli Stan
-                .OnDelete(DeleteBehavior.Restrict);   // opcionalno, da se ne brišu stanovi
-
-            // ⚠️ Maknuto jer Najmoprimac više nema kolekciju Stanovi
-            // modelBuilder.Entity<Najmoprimac>()
-            //     .HasMany(n => n.Stanovi)
-            //     .WithOne()
-            //     .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }
