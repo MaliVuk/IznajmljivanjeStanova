@@ -17,7 +17,7 @@ export default function NajmoprimacDodaj() {
         let podaci = new FormData(e.target);
 
         dodaj({
-            Ime_ili_Naziv: podaci.get('Ime_ili_Naziv'),
+            ime_ili_naziv: podaci.get('ime_ili_naziv'),
             kontakt: podaci.get('kontakt')
         });
     }
@@ -27,9 +27,9 @@ export default function NajmoprimacDodaj() {
             <h2>Dodavanje najmoprimac</h2>
             <Form onSubmit={odradiSubmit}>
 
-                <Form.Group controlId="Ime_ili_Naziv">
-                    <Form.Label>Ime_ili_Naziv</Form.Label>
-                    <Form.Control type="text" name="Ime_ili_Naziv" required />
+                <Form.Group controlId="ime_ili_naziv">
+                    <Form.Label>ime_ili_naziv</Form.Label>
+                    <Form.Control type="text" name="ime_ili_naziv" required />
                 </Form.Group>
 
                 <Form.Group controlId="kontakt">

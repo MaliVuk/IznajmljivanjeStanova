@@ -38,7 +38,7 @@ export default function NajmoprimacPregled() {
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
-                        <th>Ime_ili_Naziv</th>
+                        <th>ime_ili_naziv</th>
                         <th>Kontakt</th>
                         <th>Akcija</th>
                     </tr>
@@ -51,7 +51,7 @@ export default function NajmoprimacPregled() {
                     ) : (
                         najmoprimci.map((n, index) => (
                             <tr key={index}>
-                                <td>{n.Ime_ili_Naziv}</td>
+                                <td>{n.ime_ili_naziv}</td>
                                 <td>{n.kontakt}</td>
                                 <td>
                                       <Button  onClick={() =>navigate(`/Najmoprimci/${n.sifra}`)}>

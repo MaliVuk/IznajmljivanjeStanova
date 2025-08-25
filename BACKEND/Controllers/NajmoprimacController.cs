@@ -25,7 +25,7 @@ namespace BACKEND.Controllers
                 .Select(n => new NajmoprimacDTORead
                 {
                     Sifra = n.Sifra,
-                    Ime_ili_Naziv = n.Ime_ili_Naziv, // koristi polje iz modela
+                    ime_ili_naziv = n.ime_ili_naziv, // koristi polje iz modela
                     Kontakt = n.Kontakt
                 })
                 .ToListAsync();
@@ -39,7 +39,7 @@ namespace BACKEND.Controllers
         {
             var n = new Najmoprimac
             {
-                Ime_ili_Naziv = dto.Ime_ili_Naziv,
+                ime_ili_naziv = dto.ime_ili_naziv,
                 Kontakt = dto.Kontakt
             };
 

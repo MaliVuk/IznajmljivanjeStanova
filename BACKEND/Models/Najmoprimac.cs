@@ -13,7 +13,7 @@ namespace BACKEND.Models
 
         [Required]
         [MaxLength(100)]
-        public string Ime_ili_Naziv { get; set; } = "";  // Ime osobe ili naziv firme
+        public string ime_ili_naziv { get; set; } = "";  // Ime osobe ili naziv firme
 
         [MaxLength(50)]
         public string Kontakt { get; set; } = "";        // Kontakt podaci (telefon, email...)
