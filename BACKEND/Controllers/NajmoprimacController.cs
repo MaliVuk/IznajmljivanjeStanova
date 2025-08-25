@@ -61,5 +61,40 @@ namespace BACKEND.Controllers
 
             return NoContent();
         }
-    }
+
+        [HttpPut("{sifra:int}")]
+        public async Task<IActionResult> Put(int sifra, [FromBody] NajmoprimacDTOCreate dto)
+        {
+            // pronađi postojeći zapis
+            var n = await _context.Najmoprimci.FindAsync(sifra);
+            if (n == null)
+                return NotFound();
+
+            // update polja
+            n.ime_ili_naziv = dto.ime_ili_naziv;
+            n.Kontakt = dto.Kontakt;
+
+            // spremi promjene
+            await _context.SaveChangesAsync();
+
+            return NoContent(); // 204 - uspješan update, ali bez tijela odgovora
+
+
+
+
+
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+}
 }
